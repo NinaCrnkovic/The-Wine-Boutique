@@ -1,0 +1,469 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #faf0e6; /* Lagana bež boja */
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+header {
+    background-color: #800020; /* Tamnocrvena boja */
+    padding: 10px 0;
+}
+/* Header Styles */
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around; /* Updated for even spacing */
+    align-items: center;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 16px;
+    font-weight: bold;
+}
+
+nav ul li a.button {
+    background: #4b0082; /* Consistent button color */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none; /* Remove underline from links styled as buttons */
+    display: inline-block; /* Ensure proper display */
+}
+
+nav ul li a.button:hover {
+    background: #6a0dad; /* Lighter purple for hover effect */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    max-height: 50px;
+    margin-right: 10px;
+}
+
+h1 {
+    color: #800020; /* Tamnocrvena boja */
+    text-align: center;
+    margin-top: 20px;
+}
+
+form {
+    background: #fff;
+    padding: 20px;
+    margin: 50px auto;
+    border-radius: 8px;
+    max-width: 600px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid #800020; /* Tamnocrvena boja */
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #4b0082; /* Indigo boja */
+}
+
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+    width: calc(100% - 16px); /* Dodavanje razmaka s desne strane */
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #4b0082; /* Indigo boja */
+    border-radius: 4px;
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+}
+
+button,
+a.button {
+    background: #4b0082; /* Indigo boja */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none; /* Uklanjanje podcrtavanja za a.button */
+    display: inline-block; /* Osigurava da se gumb prikazuje ispravno */
+}
+
+button:hover,
+a.button:hover {
+    background: #6a0dad; /* Svjetlija ljubičasta za hover efekat */
+}
+
+form .form-group {
+    margin-bottom: 15px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+    border-color: #800020; /* Tamnocrvena boja */
+    outline: none;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.success-message {
+    background: #fff;
+    padding: 20px;
+    margin: 50px auto;
+    border-radius: 8px;
+    max-width: 600px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid #800020; /* Tamnocrvena boja */
+    text-align: center;
+}
+
+.success-message h1, h2 {
+    color: #800020; /* Tamnocrvena boja */
+    margin-bottom: 20px;
+    align-content: center;
+}
+
+.success-message p {
+    color: #4b0082; /* Indigo boja */
+    margin-bottom: 20px;
+}
+
+.success-message .button {
+    margin: 5px;
+}
+
+.wine-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.wine-card {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 300px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.wine-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.wine-card h3 {
+    margin-top: 10px;
+    color: #800020; /* Match the header color */
+}
+
+.wine-card p {
+    color: #333;
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.search-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+    background: #faf0e6;
+}
+
+.button, button, a.button {
+    background: #4b0082; /* Consistent button color */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none; /* Remove underline from links styled as buttons */
+    display: inline-block; /* Ensure proper display */
+}
+
+.button:hover, button:hover, a.button:hover {
+    background: #6a0dad; /* Lighter purple for hover effect */
+}
+
+
+h2, h3, h4 {
+    text-align: center;
+}
+
+.category-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.category-card {
+    margin: 10px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+    width: 200px;
+}
+
+.category-card:hover {
+    transform: scale(1.05);
+}
+
+.category-card img {
+    width: 100%;
+    height: auto;
+}
+
+.category-card h1 {
+    font-size: 1.2em;
+    margin: 10px 0;
+    color: #333;
+}
+/* CSS for store info section */
+.store-info {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px auto;
+    width: 80%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.store-info h2 {
+    color: #800000;
+    margin-bottom: 15px;
+}
+
+.store-info h3 {
+    color: #800000;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.store-info p {
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.store-info ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.store-info ul li {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.store-info ul li strong {
+    color: #800000;
+}
+/* CSS for pagination */
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pagination ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.pagination ul li {
+    display: inline;
+    margin: 0 5px;
+}
+
+.pagination ul li a {
+    text-decoration: none;
+    color: #800000;
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+.pagination ul li a.active {
+    background-color: #800000;
+    color: #fff;
+}
+/* Register Page Styles */
+.register-container {
+    width: 40%;
+    margin: 50px auto;
+    padding: 20px;
+    border: 2px solid #a00000;
+    border-radius: 10px;
+    background-color: #fff5f5;
+}
+
+.register-container h1 {
+    text-align: center;
+    color: #a00000;
+}
+
+.register-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.register-container label {
+    font-weight: bold;
+    color: #660033;
+}
+
+.register-container input {
+    padding: 10px;
+    border: 1px solid #660033;
+    border-radius: 5px;
+    outline: none;
+}
+
+.register-container button {
+    padding: 10px;
+    background-color: #660033;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.register-container button:hover {
+    background-color: #a00000;
+}
+/* Home Page Styles */
+.home-container {
+    width: 80%;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.home-container img {
+    max-width: 40%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.home-container h1 {
+    font-size: 2.5em;
+    color: #a00000;
+    margin-bottom: 20px;
+}
+
+.home-container p {
+    font-size: 1.2em;
+    color: #660033;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+
+
+/* Login Page Styles */
+.login-container {
+    width: 40%;
+    margin: 50px auto;
+    padding: 20px;
+    border: 2px solid #a00000;
+    border-radius: 10px;
+    background-color: #fff5f5;
+}
+
+.login-container h1 {
+    text-align: center;
+    color: #a00000;
+}
+
+.login-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.login-container label {
+    font-weight: bold;
+    color: #660033;
+}
+
+.login-container input {
+    padding: 10px;
+    border: 1px solid #660033;
+    border-radius: 5px;
+    outline: none;
+}
+
+.login-container button {
+    padding: 10px;
+    background-color: #660033;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-container button:hover {
+    background-color: #a00000;
+}
+
+.cart-link {
+    position: relative;
+    display: inline-block;
+}
+
+.cart-icon {
+    width: 30px;
+    height: 30px;
+}
+
+.cart-count {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 5px 10px;
+    font-size: 12px;
+}

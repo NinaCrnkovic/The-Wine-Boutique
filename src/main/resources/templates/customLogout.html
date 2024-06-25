@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Logout</title>
+    <link rel="stylesheet" href="/css/logoutCss.css">
+</head>
+<body>
+<div class="logout-container">
+    <h1>Are you sure you want to logout?</h1>
+    <div class="button-group">
+        <form th:action="@{/TheWineBoutique/logout}" method="post" style="display: inline;">
+            <button type="submit" class="button">Yes, Logout</button>
+        </form>
+        <a href="/TheWineBoutique/wineStore" class="button">Cancel</a>
+    </div>
+</div>
+</body>
+</html>

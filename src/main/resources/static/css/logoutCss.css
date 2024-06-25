@@ -1,0 +1,42 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #faf0e6; /* Lagana bež boja */
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+/* Logout Page Styles */
+.logout-container {
+    width: 40%;
+    margin: 50px auto;
+    padding: 20px;
+    border: 2px solid #a00000;
+    border-radius: 10px;
+    background-color: #fff5f5;
+    text-align: center;
+}
+
+.logout-container h1 {
+    color: #a00000;
+}
+
+.logout-container .button-group {
+    display: inline-block;
+    text-align: center;
+}
+
+.logout-container .button {
+    padding: 10px 20px;
+    background-color: #660033;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: background-color 0.3s;
+}
+
+.logout-container .button:hover {
+    background-color: #a00000;
+}

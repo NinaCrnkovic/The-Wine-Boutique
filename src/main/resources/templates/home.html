@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>The Wine Boutique</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header>
+  <nav>
+    <ul>
+      <li class="logo"><img src="/images/logo.png" alt="Logo"></li>
+      <li><a th:href="@{/TheWineBoutique/home}">Home</a></li>
+      <li><a th:href="@{/TheWineBoutique/wineStore}">Wine Store</a></li>
+      <li><a th:href="@{/TheWineBoutique/search}">Search Wines</a></li>
+      <li th:if="${isAdmin}"><a th:href="@{/TheWineBoutique/allwines}">All Wines</a></li>
+
+      <li th:if="${isAdmin}"><a th:href="@{/TheWineBoutique/newWine}">Add New Wine</a></li>
+
+      <li th:if="${isAuthenticated}">
+        <a href="/TheWineBoutique/logout" class="button">Logout</a>
+      </li>
+      <li th:if="${!isAuthenticated}">
+        <a href="/TheWineBoutique/login" class="button">Login</a>
+        <a href="/TheWineBoutique/register" class="button">Register</a>
+      </li>
+      <li class="cart-link">
+        <a href="/TheWineBoutique/cart" class="button">
+          <img src="/images/cart.png" alt="Cart" class="cart-icon">
+          <span class="cart-count" th:text="${cartSize}">0</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>
+<div class="home-container">
+  <h1>Welcome to The Wine Boutique</h1>
+  <img src="/images/home.png" alt="The Wine Boutique">
+  <p>Your ultimate destination for exquisite wines from around the world. At The Wine Boutique, we take pride in curating a diverse collection of fine wines, perfect for every occasion. Whether you are a connoisseur or just beginning your journey into the world of wines, you'll find something to delight your palate. Explore, discover, and enjoy the finest selections that each vineyard has to offer. Join us in celebrating the art of wine-making and the joy of exceptional taste.</p>
+</div>
+</body>
+</html>
+
+

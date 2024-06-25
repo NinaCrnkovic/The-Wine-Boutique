@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cart</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header>
+    <nav>
+        <ul>
+            <li class="logo"><img src="/images/logo.png" alt="Logo"></li>
+            <li><a th:href="@{/TheWineBoutique/home}">Home</a></li>
+            <li><a th:href="@{/TheWineBoutique/wineStore}">Wine Store</a></li>
+            <li><a th:href="@{/TheWineBoutique/search}">Search Wines</a></li>
+            <li th:if="${isAdmin}"><a th:href="@{/TheWineBoutique/allwines}">All Wines</a></li>
+            <li th:if="${isAdmin}"><a th:href="@{/TheWineBoutique/newWine}">Add New Wine</a></li>
+            <li th:if="${isAuthenticated}">
+                <a href="/TheWineBoutique/logout" class="button">Logout</a>
+            </li>
+            <li th:if="${!isAuthenticated}">
+                <a href="/TheWineBoutique/login" class="button">Login</a>
+                <a href="/TheWineBoutique/register" class="button">Register</a>
+            </li>
+            <li>
+                <a th:href="@{/TheWineBoutique/cart}" class="cart-icon">
+                    <img src="/images/cart.png" alt="Cart">
+                    <span th:text="${cart.size()}">0</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<h1>Your Shopping Cart</h1>
+
+<div th:if="${cart.items.size() == 0}">
+    <p>Your cart is empty.</p>
+</div>
+<div th:if="${cart.items.size() > 0}">
+    <table>
+        <thead>
+        <tr>
+            <th>Wine</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item : ${cart.items}">
+            <td th:text="${item.wine.name}">Wine Name</td>
+            <td th:text="${item.quantity}">Quantity</td>
+            <td th:text="${item.wine.price}">Price</td>
+            <td th:text="${item.wine.price * item.quantity}">Total</td>
+            <td>
+                <form th:action="@{/cart/remove}" method="post">
+                    <input type="hidden" name="itemId" th:value="${item.id}">
+                    <button type="submit">Remove</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div>
+        <h3>Total Price: <span th:text="${cart.items.stream().mapToDouble(item -> item.wine.price.doubleValue() * item.quantity).sum()}">Total Price</span></h3>
+    </div>
+    <div>
+        <button type="button" onclick="location.href='/checkout'">Proceed to Checkout</button>
+    </div>
+</div>
+
+</body>
+</html>

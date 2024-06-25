@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirm Delete</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header>
+    <nav>
+        <ul>
+            <li class="logo"><img src="/images/logo.png" alt="Logo"></li>
+            <li><a th:href="@{/TheWineBoutique/home}">Home</a></li>
+            <li><a th:href="@{/TheWineBoutique/wineStore}">Wine Store</a></li>
+            <li><a th:href="@{/TheWineBoutique/search}">Search Wines</a></li>
+            <li th:if="${isAdmin}"><a th:href="@{/TheWineBoutique/allwines}">All Wines</a></li>
+            <li th:if="${isAdmin}"><a th:href="@{/TheWineBoutique/newWine}">Add New Wine</a></li>
+            <li th:if="${isAuthenticated}">
+                <a href="/TheWineBoutique/logout" class="button">Logout</a>
+            </li>
+            <li th:if="${!isAuthenticated}">
+                <a href="/TheWineBoutique/login" class="button">Login</a>
+                <a href="/TheWineBoutique/register" class="button">Register</a>
+            </li>
+            <li>
+                <a th:href="@{/TheWineBoutique/cart}" class="cart-icon">
+                    <img src="/images/cart.png" alt="Cart">
+                    <span th:text="${cart.size()}">0</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<h1>Confirm Delete</h1>
+
+<h2>Are you sure you want to delete the wine: <span th:text="${wine.name}">Wine Name</span>?</h2>
+
+<form th:action="@{/TheWineBoutique/delete/{id}(id=${wine.id})}" method="post">
+    <div class="button-group">
+        <button type="submit">Delete</button>
+        <a th:href="@{/TheWineBoutique/allwines}" class="button">Cancel</a>
+    </div>
+</form>
+
+</body>
+</html>
+
+

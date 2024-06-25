@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Wine</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<header>
+    <nav>
+        <ul>
+            <li class="logo"><img src="/images/logo.png" alt="Logo"></li>
+            <li><a th:href="@{/TheWineBoutique/home}">Home</a></li>
+            <li><a th:href="@{/TheWineBoutique/wineStore}">Wine Store</a></li>
+            <li><a th:href="@{/TheWineBoutique/search}">Search Wines</a></li>
+            <li th:if="${isAdmin}"><a th:href="@{/TheWineBoutique/allwines}">All Wines</a></li>
+            <li th:if="${isAdmin}"><a th:href="@{/TheWineBoutique/newWine}">Add New Wine</a></li>
+            <li th:if="${isAuthenticated}">
+                <a href="/TheWineBoutique/logout" class="button">Logout</a>
+            </li>
+            <li th:if="${!isAuthenticated}">
+                <a href="/TheWineBoutique/login" class="button">Login</a>
+                <a href="/TheWineBoutique/register" class="button">Register</a>
+            </li>
+
+        </ul>
+    </nav>
+</header>
+
+
+<h1>Edit Wine</h1>
+
+<form th:action="@{/TheWineBoutique/edit}" th:object="${wine}" method="post">
+    <input type="hidden" th:field="*{id}">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" th:field="*{name}">
+    </div>
+    <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" th:field="*{description}"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="category">Category</label>
+        <select id="category" th:field="*{category}">
+            <option th:each="category : ${wineCategoryList}" th:value="${category}" th:text="${category.name()}"></option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="type">Type</label>
+        <input type="text" id="type" th:field="*{type}">
+    </div>
+    <div class="form-group">
+        <label for="vintage">Vintage</label>
+        <input type="text" id="vintage" th:field="*{vintage}">
+    </div>
+    <div class="form-group">
+        <label for="country">Country</label>
+        <input type="text" id="country" th:field="*{country}">
+    </div>
+    <div class="form-group">
+        <label for="winery">Winery</label>
+        <input type="text" id="winery" th:field="*{winery}">
+    </div>
+    <div class="form-group">
+        <label for="price">Price</label>
+        <input type="number" id="price" th:field="*{price}" step="0.01">
+    </div>
+    <div class="form-group">
+        <label for="quantity">Quantity</label>
+        <input type="number" id="quantity" th:field="*{quantity}">
+    </div>
+    <div class="form-group">
+        <label for="imageUrl">Image URL</label>
+        <input type="text" id="imageUrl" th:field="*{imageUrl}">
+    </div>
+    <div class="button-group">
+        <button type="submit">Save</button>
+        <a th:href="@{/wines/allwines}" class="button">Cancel</a>
+    </div>
+</form>
+
+</body>
+</html>

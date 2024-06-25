@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Wine List</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+
+<header>
+    <nav>
+        <ul>
+            <li class="logo"><img src="/images/logo.png" alt="Logo"></li>
+            <li><a th:href="@{/TheWineBoutique/home}">Home</a></li>
+            <li><a th:href="@{/TheWineBoutique/wineStore}">Wine Store</a></li>
+            <li><a th:href="@{/TheWineBoutique/search}">Search Wines</a></li>
+            <li th:if="${isAdmin}"><a th:href="@{/TheWineBoutique/allwines}">All Wines</a></li>
+            <li th:if="${isAdmin}"><a th:href="@{/TheWineBoutique/newWine}">Add New Wine</a></li>
+            <li th:if="${isAuthenticated}">
+                <a href="/TheWineBoutique/logout" class="button">Logout</a>
+            </li>
+            <li th:if="${!isAuthenticated}">
+                <a href="/TheWineBoutique/login" class="button">Login</a>
+                <a href="/TheWineBoutique/register" class="button">Register</a>
+            </li>
+            <li class="cart-link">
+                <a href="/TheWineBoutique/cart" class="button">
+                    <img src="/images/cart.png" alt="Cart" class="cart-icon">
+                    <span class="cart-count" th:text="${cartSize}">0</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+<h1>All Wines</h1>
+
+<div class="wine-grid">
+    <div class="wine-card" th:each="wine : ${winePage.content}">
+        <img th:src="${wine.imageUrl}" alt="Wine Image">
+        <h3 th:text="${wine.name}">Wine Name</h3>
+        <p th:text="'Description: ' + ${wine.description}">Wine Description</p>
+        <p th:text="'Category: ' + ${wine.category}">Wine Category</p>
+        <p th:text="'Type: ' + ${wine.type}">Wine Type</p>
+        <p th:text="'Vintage: ' + ${wine.vintage}">Wine Vintage</p>
+        <p th:text="'Country: ' + ${wine.country}">Wine Country</p>
+        <p th:text="'Winery: ' + ${wine.winery}">Wine Winery</p>
+        <p th:text="'Price: $' + ${wine.price}">Wine Price</p>
+        <p th:text="'Quantity: ' + ${wine.quantity}">Wine Quantity</p>
+        <div class="button-group">
+            <a th:href="@{/TheWineBoutique/edit/{id}(id=${wine.id})}" class="button">Edit</a>
+            <a th:href="@{/TheWineBoutique/delete/{id}(id=${wine.id})}" class="button">Delete</a>
+        </div>
+    </div>
+</div>
+
+<div class="pagination">
+    <ul>
+        <li th:if="${currentPage > 0}">
+            <a th:href="@{/TheWineBoutique/allwines(page=${currentPage - 1})}">Previous</a>
+        </li>
+        <li th:each="i : ${#numbers.sequence(0, winePage.totalPages - 1)}">
+            <a th:href="@{/TheWineBoutique/allwines(page=${i})}" th:text="${i + 1}" th:classappend="${i == currentPage} ? 'active'"></a>
+        </li>
+        <li th:if="${currentPage < winePage.totalPages - 1}">
+            <a th:href="@{/TheWineBoutique/allwines(page=${currentPage + 1})}">Next</a>
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>
+

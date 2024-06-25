@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Success</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+
+<header>
+    <nav>
+        <ul>
+            <li class="logo"><img src="/images/logo.png" alt="Logo"></li>
+            <li><a th:href="@{/TheWineBoutique/home}">Home</a></li>
+            <li><a th:href="@{/TheWineBoutique/wineStore}">Wine Store</a></li>
+            <li><a th:href="@{/TheWineBoutique/search}">Search Wines</a></li>
+            <li th:if="${isAdmin}"><a th:href="@{/TheWineBoutique/allwines}">All Wines</a></li>
+            <li th:if="${isAdmin}"><a th:href="@{/TheWineBoutique/newWine}">Add New Wine</a></li>
+            <li th:if="${isAuthenticated}">
+                <a href="/TheWineBoutique/logout" class="button">Logout</a>
+            </li>
+            <li th:if="${!isAuthenticated}">
+                <a href="/TheWineBoutique/login" class="button">Login</a>
+                <a href="/TheWineBoutique/register" class="button">Register</a>
+            </li>
+
+        </ul>
+    </nav>
+</header>
+
+
+
+<div class="success-message">
+    <h1>Wine Added Successfully!</h1>
+    <div class="wine-card">
+        <img th:src="${wine.imageUrl}" alt="Wine Image" class="wine-image">
+        <h3 th:text="${wine.name}">Wine Name</h3>
+        <p th:text="'Description: ' + ${wine.description}">Wine Description</p>
+        <p th:text="'Category: ' + ${wine.category}">Wine Category</p>
+        <p th:text="'Type: ' + ${wine.type}">Wine Type</p>
+        <p th:text="'Vintage: ' + ${wine.vintage}">Wine Vintage</p>
+        <p th:text="'Country: ' + ${wine.country}">Wine Country</p>
+        <p th:text="'Winery: ' + ${wine.winery}">Wine Winery</p>
+        <p th:text="'Price: $' + ${wine.price}">Wine Price</p>
+        <p th:text="'Quantity: ' + ${wine.quantity}">Wine Quantity</p>
+    </div>
+    <div class="button-group">
+        <a class="button" href="/TheWineBoutique/newWine">Add Another Wine</a>
+        <a class="button" href="/TheWineBoutique/allwines">View All Wines</a>
+    </div>
+</div>
+
+</body>
+</html>
+
