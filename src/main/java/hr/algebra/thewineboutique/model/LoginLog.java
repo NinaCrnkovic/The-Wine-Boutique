@@ -1,6 +1,13 @@
 package hr.algebra.thewineboutique.model;
 
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.time.LocalDateTime;
+
 @Entity
+@Getter
+@Setter
 @Table(name = "login_logs")
 public class LoginLog {
 

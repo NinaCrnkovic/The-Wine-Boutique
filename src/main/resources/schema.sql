@@ -64,3 +64,11 @@ CREATE TABLE orders (
                         FOREIGN KEY (cart_id) REFERENCES cart(id),
                         FOREIGN KEY (user_id) REFERENCES users(id)
 );
+
+
+CREATE TABLE login_logs (
+                            id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                            username VARCHAR(255) NOT NULL,
+                            login_time TIMESTAMP NOT NULL,
+                            ip_address VARCHAR(45) NOT NULL
+);

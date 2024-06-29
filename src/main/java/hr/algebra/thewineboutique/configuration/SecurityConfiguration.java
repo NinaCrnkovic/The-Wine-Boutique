@@ -20,7 +20,7 @@ public class SecurityConfiguration {
                         .requestMatchers("/css/**", "/js/**", "/images/**").permitAll() // Allow access to static resources
                         .requestMatchers("/TheWineBoutique/login", "/TheWineBoutique/login2", "/TheWineBoutique/register", "/TheWineBoutique/home", "/TheWineBoutique/wineStore", "/TheWineBoutique/allwines", "/TheWineBoutique/search", "/TheWineBoutique/ajaxSearch", "/TheWineBoutique/category/**", "/TheWineBoutique/all", "/TheWineBoutique/cart/add", "/TheWineBoutique/cart","/TheWineBoutique/cart/view", "/TheWineBoutique/loginPrompt", "/TheWineBoutique/cart/checkout", "/TheWineBoutique/cart/view").permitAll()
                         .requestMatchers("/TheWineBoutique/orders","/TheWineBoutique/paypal/execute", "/TheWineBoutique/succes","/TheWineBoutique/cancel","/TheWineBoutique/pay","/TheWineBoutique/order/submit", "/TheWineBoutique/order", "/TheWineBoutique/order/complete", "/TheWineBoutique/orderConfirmation", "/TheWineBoutique/paypal").hasRole("USER")
-                        .requestMatchers("/TheWineBoutique/paypal/execute","/TheWineBoutique/orders",
+                        .requestMatchers("/TheWineBoutique/paypal/execute","/TheWineBoutique/orders", "/TheWineBoutique/loginLogs",
                                 "/TheWineBoutique/succes","/TheWineBoutique/cancel","/TheWineBoutique/pay", "/TheWineBoutique/order/submit","/TheWineBoutique/order", "/TheWineBoutique/orderConfirmation", "/TheWineBoutique/order/complete","/TheWineBoutique/paypal", "/TheWineBoutique/newWine", "/TheWineBoutique/edit/**", "/TheWineBoutique/delete/**", "/TheWineBoutique/confirmDelete/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
