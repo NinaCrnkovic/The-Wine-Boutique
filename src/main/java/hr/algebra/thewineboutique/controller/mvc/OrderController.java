@@ -121,7 +121,7 @@ public class OrderController  extends BaseController {
         return "redirect:/";
     }
 
-    @PostMapping("/success")
+    @GetMapping("/success")
     public String successPay(@RequestParam("paymentId") String paymentId, @RequestParam("PayerID") String payerId, Model model, HttpSession session) {
         try {
             Payment payment = payPalService.executePayment(paymentId, payerId);
@@ -132,7 +132,7 @@ public class OrderController  extends BaseController {
                     orderService.saveOrder(order); // Save the order
                 }
                 model.addAttribute("message", "Payment successful");
-                return "success";
+                return "paypalSuccess";
             }
         } catch (PayPalRESTException e) {
             e.printStackTrace();

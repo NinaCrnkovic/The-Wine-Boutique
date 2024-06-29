@@ -17,6 +17,7 @@
             <li th:if="${isAdmin}"><a th:href="@{/TheWineBoutique/allwines}">All Wines</a></li>
             <li th:if="${isAdmin}"><a th:href="@{/TheWineBoutique/newWine}">Add New Wine</a></li>
             <li th:if="${isAuthenticated}"><a th:href="@{/TheWineBoutique/orders}">All Orders</a></li>
+            <li th:if="${isAdmin}"><a th:href="@{/TheWineBoutique/loginLogs}">All Logins</a></li>
             <li th:if="${isAuthenticated}">
                 <a href="/TheWineBoutique/logout" class="button">Logout</a>
             </li>
