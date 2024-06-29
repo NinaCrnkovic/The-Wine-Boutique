@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Page</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="order-container">
+    <h1>Order Page</h1>
+    <div class="order-details">
+        <div class="order-section">
+            <h2>Cart Items</h2>
+            <ul>
+                <li th:each="item : ${cartItems}">
+                    <span th:text="${item.wine.name}"></span> -
+                    <span th:text="${item.quantity}"></span> -
+                    <span th:text="${item.wine.price}"></span>
+                </li>
+            </ul>
+            <p>Total Price: <span th:text="${totalPrice}"></span></p>
+        </div>
+
+        <div class="order-section">
+            <h2>Delivery Address</h2>
+            <p th:text="${user.address}"></p>
+            <p th:text="${user.city}"></p>
+            <p th:text="${user.country}"></p>
+        </div>
+
+        <div class="order-section">
+            <h2>Payment Method</h2>
+            <form th:action="@{/TheWineBoutique/order/submit}" method="post">
+                <label for="paymentMethod">Payment Method:</label>
+                <select name="paymentMethod" id="paymentMethod">
+                    <option value="CASH_ON_DELIVERY">CASH_ON_DELIVERY</option>
+                    <option value="PAYPAL">PAYPAL</option>
+                </select>
+                <button type="submit">Complete Order</button>
+            </form>
+            <button onclick="location.href='/TheWineBoutique/wineStore'" class="btn-back-shopping">Back to Shopping</button>
+        </div>
+
+        <div class="order-section">
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
+

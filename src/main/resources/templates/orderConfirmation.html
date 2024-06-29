@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Confirmation</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="confirmation-container">
+    <h1>Order Confirmation</h1>
+    <p>Thank you for your order!</p>
+    <p>Your order number is: <span th:text="${order.id}"></span></p>
+    <p>Total Price: <span th:text="${order.totalPrice}"></span></p>
+    <p>Order Date: <span th:text="${order.orderDate}"></span></p>
+    <p>Payment Method: <span th:text="${order.paymentMethod}"></span></p>
+    <button onclick="location.href='/TheWineBoutique/wineStore'" class="btn-back-shopping">Back to Shopping</button>
+</div>
+</body>
+</html>

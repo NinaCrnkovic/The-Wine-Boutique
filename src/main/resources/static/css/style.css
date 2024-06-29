@@ -472,7 +472,7 @@ h2, h3, h4 {
 
 .cart-count {
     position: absolute;
-    top: -10px;
+    top: 45px;
     right: -10px;
     background-color: red;
     color: white;
@@ -649,4 +649,172 @@ h2, h3, h4 {
     height: 20px;
     margin-top: 50px;
     text-align: center;
+}
+
+.login-prompt-container {
+    text-align: center;
+    margin: 50px auto;
+    padding: 20px;
+    border: 2px solid #800020;
+    border-radius: 10px;
+    background-color: #fff5f5;
+    width: 50%;
+}
+
+.login-prompt-container h1 {
+    color: #800020;
+    margin-bottom: 20px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.back-to-cart {
+    background-color: #4b0082;
+}
+
+.back-to-cart:hover {
+    background-color: #6a0dad;
+}
+
+.order-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.order-container h1 {
+    text-align: center;
+    color: #8B0000;
+}
+
+.order-section {
+    margin-bottom: 20px;
+}
+
+.order-section h2 {
+    color: #8B0000;
+}
+
+.order-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.order-section ul li {
+    background: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.order-section p {
+    margin: 10px 30px;
+    text-align: center;
+    color: #6a0dad;
+
+}
+
+.btn-complete-order {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #8B0000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn-complete-order:hover {
+    background-color: #b22222;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+label {
+    font-size: 16px;
+}
+
+/* style.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f6f4;
+    color: #333;
+}
+
+.confirmation-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.confirmation-container h1 {
+    font-size: 24px;
+    color: #b03a2e;
+    margin-bottom: 20px;
+}
+
+.confirmation-container p {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.confirmation-container span {
+    font-weight: bold;
+}
+
+.confirmation-container button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #b03a2e;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.confirmation-container button:hover {
+    background-color: #a8322e;
+}
+.paypal-container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.paypal-container h1 {
+    color: #8A2BE2;
+}
+
+.paypal-container p {
+    font-size: 1.2em;
+}
+
+.paypal-container button {
+    margin: 20px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.paypal-container .btn-back-shopping {
+    background-color: #f44336;
 }

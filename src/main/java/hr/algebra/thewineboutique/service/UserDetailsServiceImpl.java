@@ -3,12 +3,16 @@ package hr.algebra.thewineboutique.service;
 import hr.algebra.thewineboutique.dto.UserRegistrationDto;
 import hr.algebra.thewineboutique.model.ApplicationUser;
 import hr.algebra.thewineboutique.model.ApplicationRole;
+import hr.algebra.thewineboutique.model.CartItem;
 import hr.algebra.thewineboutique.repository.ApplicationRoleRepository;
 import hr.algebra.thewineboutique.repository.SpringDataJpaApplicationUserRepository;
+import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -32,7 +36,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private final ApplicationRoleRepository roleRepository;
 
     private final PasswordEncoder passwordEncoder;
-
+    private final CartService cartService;
 
 
 
@@ -59,16 +63,15 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         ApplicationUser user = userRepository.findByUsername(username);
-
-        if(Optional.ofNullable(user).isEmpty()) {
-            throw new UsernameNotFoundException("The user '" + username + "' does not exist!");
+        if (user == null) {
+            throw new UsernameNotFoundException("User not found");
         }
 
-        List<String> rolesString =  user.getRoles().stream()
+        List<String> rolesString = user.getRoles().stream()
                 .map(ApplicationRole::getName)
                 .toList();
 
-        String[] rolesStringArray = rolesString.toArray(String[]::new);
+        String[] rolesStringArray = rolesString.toArray(new String[0]);
 
         return User.withUsername(user.getUsername())
                 .password(user.getPassword())
@@ -79,4 +82,22 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                 .disabled(false)
                 .build();
     }
+
+    public ApplicationUser authenticate(String username, String password) {
+        ApplicationUser user = userRepository.findByUsername(username);
+        if (user != null && passwordEncoder.matches(password, user.getPassword())) {
+            return user;
+        }
+        return null;
+    }
+
+    public ApplicationUser getCurrentUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUsername = authentication.getName();
+        return userRepository.findByUsername(currentUsername);
+    }
+
+
+
+
 }

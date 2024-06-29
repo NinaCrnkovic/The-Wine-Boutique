@@ -16,6 +16,8 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 @EqualsAndHashCode
 @Entity
+@Getter
+@Setter
 @Table(name = "cart")
 public class Cart {
     @Id

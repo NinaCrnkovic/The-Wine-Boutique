@@ -53,6 +53,7 @@ CREATE TABLE cart_item (
 );
 
 -- Table for Orders
+-- Table for Orders
 CREATE TABLE orders (
                         id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
                         cart_id INT,

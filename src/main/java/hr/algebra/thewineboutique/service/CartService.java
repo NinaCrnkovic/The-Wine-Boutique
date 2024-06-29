@@ -3,10 +3,10 @@ package hr.algebra.thewineboutique.service;
 import hr.algebra.thewineboutique.model.Cart;
 import hr.algebra.thewineboutique.model.CartItem;
 import hr.algebra.thewineboutique.model.Wine;
-import jakarta.servlet.http.HttpSession;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 
 public interface CartService {
@@ -20,4 +20,8 @@ public interface CartService {
     void removeItemFromCart(String sessionId, Integer itemId);
 
     void clearCart(String sessionId);
+
+    Cart getCartBySessionId(String sessionId);
+
+
 }

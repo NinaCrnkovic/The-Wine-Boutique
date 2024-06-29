@@ -5,15 +5,12 @@ import hr.algebra.thewineboutique.model.CartItem;
 import hr.algebra.thewineboutique.model.Wine;
 import hr.algebra.thewineboutique.repository.CartItemRepository;
 import hr.algebra.thewineboutique.repository.CartRepository;
-import hr.algebra.thewineboutique.repository.WineRepository;
-import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
-import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -22,18 +19,23 @@ import java.util.List;
 public class CartServiceImpl implements CartService {
 
     private final CartItemRepository cartItemRepository;
+    private final CartRepository cartRepository;
 
     @Override
     public void addItemToCart(String sessionId, Wine wine, int quantity) {
-        CartItem existingCartItem = cartItemRepository.findByWineAndSessionId(wine, sessionId);
-        if (existingCartItem != null) {
-            existingCartItem.setQuantity(existingCartItem.getQuantity() + quantity);
-            cartItemRepository.save(existingCartItem);
+        CartItem existingItem = cartItemRepository.findByWineAndSessionId(wine, sessionId);
+        if (existingItem != null) {
+            existingItem.setQuantity(existingItem.getQuantity() + quantity);
+            cartItemRepository.save(existingItem);
         } else {
-            CartItem cartItem = new CartItem(sessionId, wine, quantity);
-            cartItemRepository.save(cartItem);
+            CartItem newItem = new CartItem();
+            newItem.setWine(wine);
+            newItem.setSessionId(sessionId);
+            newItem.setQuantity(quantity);
+            cartItemRepository.save(newItem);
         }
     }
+
 
     @Override
     public List<CartItem> getCartItems(String sessionId) {
@@ -60,5 +62,10 @@ public class CartServiceImpl implements CartService {
     public void clearCart(String sessionId) {
         List<CartItem> cartItems = cartItemRepository.findBySessionId(sessionId);
         cartItemRepository.deleteAll(cartItems);
+    }
+
+    @Override
+    public Cart getCartBySessionId(String sessionId) {
+        return cartRepository.findBySessionId(sessionId);
     }
 }
