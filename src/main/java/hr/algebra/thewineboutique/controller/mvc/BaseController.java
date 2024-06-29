@@ -24,6 +24,5 @@ public abstract class BaseController {
         model.addAttribute("isAuthenticated", isAuthenticated);
         model.addAttribute("isAdmin", isAdmin);
 
-        model.addAttribute("cartSize", cartService.getCartSize());
     }
 }

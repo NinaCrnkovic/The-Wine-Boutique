@@ -2,59 +2,62 @@ package hr.algebra.thewineboutique.controller.mvc;
 
 import hr.algebra.thewineboutique.model.Cart;
 import hr.algebra.thewineboutique.model.Wine;
+import hr.algebra.thewineboutique.service.CartService;
 import hr.algebra.thewineboutique.service.WineService;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/cart")
-public class CartController {
+@RequestMapping("/TheWineBoutique")
 
+public class CartController extends BaseController{
+
+    private final CartService cartService;
     private final WineService wineService;
 
-    public CartController(WineService wineService) {
+    public CartController(CartService cartService, WineService wineService, CartService cartService1) {
+        super(cartService);
+        this.cartService = cartService1;
         this.wineService = wineService;
     }
 
-    @GetMapping
+    @PostMapping("/cart/add")
+    public String addToCart(@RequestParam("wineId") Integer wineId, @RequestParam("quantity") int quantity, HttpSession session) {
+        Wine wine = wineService.findById(wineId);
+        cartService.addItemToCart(session.getId(), wine, quantity);
+        return "redirect:/TheWineBoutique/cart/view";
+    }
+
+    @GetMapping("/cart/view")
     public String viewCart(HttpSession session, Model model) {
-        Cart cart = (Cart) session.getAttribute("cart");
-        if (cart == null) {
-            cart = new Cart();
-            session.setAttribute("cart", cart);
-        }
-        model.addAttribute("cart", cart);
+        model.addAttribute("cartItems", cartService.getCartItems(session.getId()));
+        model.addAttribute("totalPrice", cartService.getTotalPrice(session.getId()));
+
         return "cart";
     }
 
-    @PostMapping("/add")
-    public String addToCart(@RequestParam("wineId") int wineId, @RequestParam("quantity") int quantity, HttpSession session) {
-        Cart cart = (Cart) session.getAttribute("cart");
-        if (cart == null) {
-            cart = new Cart();
-            session.setAttribute("cart", cart);
-        }
-
-        Wine wine = wineService.findById(wineId);
-        if (wine != null) {
-            cart.addItem(wine, quantity);
-        }
-
-        return "redirect:/cart";
+    @PostMapping("/cart/remove/{itemId}")
+    public String removeFromCart(@PathVariable("itemId") Integer itemId, HttpSession session) {
+        cartService.removeItemFromCart(session.getId(), itemId);
+        return "redirect:/TheWineBoutique/cart/view";
     }
 
-    @PostMapping("/remove")
-    public String removeFromCart(@RequestParam("itemId") Long itemId, HttpSession session) {
-        Cart cart = (Cart) session.getAttribute("cart");
-        if (cart != null) {
-            cart.removeItem(itemId);
-        }
-        return "redirect:/cart";
+    @PostMapping("/cart/clear")
+    public String clearCart(HttpSession session) {
+        cartService.clearCart(session.getId());
+        return "redirect:/TheWineBoutique/cart/view";
+    }
+
+    @PostMapping("/cart/checkout")
+    public String checkout(HttpSession session, Model model) {
+        // Implement checkout logic here
+        return "checkout";
     }
 }
-

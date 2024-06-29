@@ -18,7 +18,7 @@ public class SecurityConfiguration {
         http
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/css/**", "/js/**", "/images/**").permitAll() // Allow access to static resources
-                        .requestMatchers("/TheWineBoutique/login", "/TheWineBoutique/register", "/TheWineBoutique/home", "/TheWineBoutique/wineStore", "/TheWineBoutique/allwines", "/TheWineBoutique/search", "/TheWineBoutique/ajaxSearch", "/TheWineBoutique/category/**", "/TheWineBoutique/all").permitAll()
+                        .requestMatchers("/TheWineBoutique/login", "/TheWineBoutique/register", "/TheWineBoutique/home", "/TheWineBoutique/wineStore", "/TheWineBoutique/allwines", "/TheWineBoutique/search", "/TheWineBoutique/ajaxSearch", "/TheWineBoutique/category/**", "/TheWineBoutique/all", "/TheWineBoutique/cart","/TheWineBoutique/cart/view").permitAll()
                         .requestMatchers("/TheWineBoutique/newWine", "/TheWineBoutique/edit/**", "/TheWineBoutique/delete/**", "/TheWineBoutique/confirmDelete/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )

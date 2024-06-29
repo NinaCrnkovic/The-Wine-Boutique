@@ -178,10 +178,23 @@ select:focus {
 
 .wine-card img {
     width: 100%;
-    height: 200px;
+    height: auto;
     object-fit: cover;
     border-radius: 8px;
     margin-bottom: 10px;
+}
+
+.quantity-selector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.quantity-selector input[type="number"] {
+    width: 50px;
+    text-align: center;
+    margin: 0 10px;
 }
 
 .wine-card h3 {
@@ -466,4 +479,174 @@ h2, h3, h4 {
     border-radius: 50%;
     padding: 5px 10px;
     font-size: 12px;
+}
+
+.cart-container {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border: 2px solid #800020;
+    border-radius: 8px;
+}
+
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.cart-table th,
+.cart-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.cart-table th {
+    background-color: #800020;
+    color: #fff;
+}
+
+.cart-table td {
+    background-color: #f9f9f9;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.button-group form {
+    display: inline;
+}
+
+#remove-btn,
+#clear-btn,
+#continue-btn,
+#checkout-btn {
+    background: #4b0082; /* Indigo color */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    display: inline-block;
+}
+#remove-btn,
+#clear-btn,
+#continue-btn,
+#checkout-btn {
+    background: #4b0082; /* Indigo color */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+#remove-btn:hover,
+#clear-btn:hover,
+#continue-btn:hover,
+#checkout-btn:hover {
+    background: #6a0dad; /* Lighter purple for hover effect */
+}
+
+#total-price {
+    font-weight: bold;
+    color: #800020; /* Dark red color */
+    margin-top: 20px;
+}
+/* Existing CSS */
+
+.cart-container {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border: 2px solid #800020;
+    border-radius: 8px;
+}
+
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.cart-table th,
+.cart-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.cart-table th {
+    background-color: #800020;
+    color: #fff;
+}
+
+.cart-table td {
+    background-color: #f9f9f9;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.button-group form {
+    display: inline;
+}
+
+#remove-btn,
+#clear-btn,
+
+#checkout-btn {
+    background: #4b0082; /* Indigo color */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+#remove-btn:hover,
+#clear-btn:hover,
+#continue-btn:hover,
+#checkout-btn:hover {
+    background: #6a0dad; /* Lighter purple for hover effect */
+}
+
+.total-price p {
+    font-weight: bold;
+
+    color: #800020; /* Dark red color */
+    margin-right: 400px;
+    text-align: right;
+}
+
+#continue-btn{
+
+    background: #4b0082; /* Indigo color */
+    color: #fff;
+    border: none;
+    padding: 30px 30px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    display: inline-block;
+    width: 150px;
+    height: 20px;
+    margin-top: 50px;
+    text-align: center;
 }

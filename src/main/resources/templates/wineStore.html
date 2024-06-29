@@ -22,6 +22,12 @@
                 <a href="/TheWineBoutique/login" class="button">Login</a>
                 <a href="/TheWineBoutique/register" class="button">Register</a>
             </li>
+            <li class="cart-link">
+                <a href="/TheWineBoutique/cart" class="button">
+                    <img src="/images/cart.png" alt="Cart" class="cart-icon">
+                    <span class="cart-count" th:text="${cartSize}">0</span>
+                </a>
+            </li>
 
         </ul>
     </nav>

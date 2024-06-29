@@ -23,7 +23,7 @@
         <a href="/TheWineBoutique/register" class="button">Register</a>
       </li>
       <li class="cart-link">
-        <a href="/TheWineBoutique/cart" class="button">
+        <a th:href="@{/TheWineBoutique/cart/view}" class="button">
           <img src="/images/cart.png" alt="Cart" class="cart-icon">
           <span class="cart-count" th:text="${cartSize}">0</span>
         </a>
@@ -31,7 +31,6 @@
     </ul>
   </nav>
 </header>
-
 
 <h1>Wines in Category: <span th:text="${category.name()}">Category Name</span></h1>
 
@@ -46,9 +45,14 @@
     <p th:text="'Country: ' + ${wine.country}">Wine Country</p>
     <p th:text="'Winery: ' + ${wine.winery}">Wine Winery</p>
     <p th:text="'Price: $' + ${wine.price}">Wine Price</p>
-    <button>Add to Cart</button>
+    <form th:action="@{/TheWineBoutique/cart/add}" method="post">
+      <input type="hidden" name="wineId" th:value="${wine.id}" />
+      <input type="number" name="quantity" value="1" min="1" />
+      <button type="submit">Add to Cart</button>
+    </form>
   </div>
 </div>
 
 </body>
 </html>
+

@@ -3,35 +3,21 @@ package hr.algebra.thewineboutique.service;
 import hr.algebra.thewineboutique.model.Cart;
 import hr.algebra.thewineboutique.model.CartItem;
 import hr.algebra.thewineboutique.model.Wine;
-import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Service;
+import jakarta.servlet.http.HttpSession;
 
+import java.math.BigDecimal;
 import java.util.List;
 
-@Service
-@AllArgsConstructor
-public class CartService {
-    private final Cart cart;
 
+public interface CartService {
 
+    void addItemToCart(String sessionId, Wine wine, int quantity);
 
-    public int getCartSize() {
-        return cart.getItems().size();
-    }
+    List<CartItem> getCartItems(String sessionId);
 
-    public void addToCart(Wine wine, int quantity) {
-        cart.addItem(wine, quantity);
-    }
+    BigDecimal getTotalPrice(String sessionId);
 
-    public void removeFromCart(Long itemId) {
-        cart.removeItem(itemId);
-    }
+    void removeItemFromCart(String sessionId, Integer itemId);
 
-    public void clearCart() {
-        cart.clear();
-    }
-
-    public List<CartItem> getCartItems() {
-        return cart.getItems();
-    }
+    void clearCart(String sessionId);
 }

@@ -26,6 +26,18 @@ public class ApplicationUser {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "email", nullable = false, unique = true)
+    private String email;
+
+    @Column(name = "address", nullable = false)
+    private String address;
+
+    @Column(name = "country", nullable = false)
+    private String country;
+
+    @Column(name = "city", nullable = false)
+    private String city;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "USER_ROLE",
             joinColumns =  @JoinColumn(name = "user_id", referencedColumnName = "id"),

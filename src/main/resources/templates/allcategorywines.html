@@ -41,6 +41,10 @@
         <p th:text="'Country: ' + ${wine.country}">Wine Country</p>
         <p th:text="'Winery: ' + ${wine.winery}">Wine Winery</p>
         <p th:text="'Price: $' + ${wine.price}">Wine Price</p>
+        <div class="quantity-selector">
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" value="1" min="1">
+        </div>
         <button>Add to Cart</button>
     </div>
 </div>

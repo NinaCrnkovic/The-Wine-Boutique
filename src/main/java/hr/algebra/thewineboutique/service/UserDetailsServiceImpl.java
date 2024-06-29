@@ -41,6 +41,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         ApplicationUser user = new ApplicationUser();
         user.setUsername(registrationDto.getUsername());
         user.setPassword(passwordEncoder.encode(registrationDto.getPassword()));
+        user.setEmail(registrationDto.getEmail());
+        user.setAddress(registrationDto.getAddress());
+        user.setCountry(registrationDto.getCountry());
+        user.setCity(registrationDto.getCity());
 
         // Check if the role exists in the database
         ApplicationRole userRole = roleRepository.findByName("ROLE_USER");

@@ -128,11 +128,17 @@ VALUES
 
 
 
-INSERT INTO USERS(username, password)
-VALUES('admin', '$2a$10$GRLdNijSQMUvl/au9ofL.eDwmoohzzS7.rmNSJZ.0FxO/BTk76klW');
+INSERT INTO USERS(username, password, email, address, country, city)
+VALUES('admin', '$2a$10$GRLdNijSQMUvl/au9ofL.eDwmoohzzS7.rmNSJZ.0FxO/BTk76klW', 'admin@example.com', '123 Admin St', 'Adminland', 'Admin City');
 
-INSERT INTO USERS(username, password)
-VALUES('user', '$2a$10$GRLdNijSQMUvl/au9ofL.eDwmoohzzS7.rmNSJZ.0FxO/BTk76klW');
+INSERT INTO USERS(username, password, email, address, country, city)
+VALUES('user', '$2a$10$GRLdNijSQMUvl/au9ofL.eDwmoohzzS7.rmNSJZ.0FxO/BTk76klW', 'user@example.com', '456 User Ave', 'Userland', 'User City');
+
+INSERT INTO USERS(username, password, email, address, country, city)
+VALUES('nina', '$2a$10$GRLdNijSQMUvl/au9ofL.eDwmoohzzS7.rmNSJZ.0FxO/BTk76klW', 'john.doe@example.com', '789 Doe Blvd', 'Doeland', 'Doe City');
+
+INSERT INTO USERS(username, password, email, address, country, city)
+VALUES('jane_smith', '$2a$10$GRLdNijSQMUvl/au9ofL.eDwmoohzzS7.rmNSJZ.0FxO/BTk76klW', 'jane.smith@example.com', '321 Smith Rd', 'Smithland', 'Smith City');
 
 INSERT INTO ROLE(name) VALUES ('ROLE_USER');
 INSERT INTO ROLE(name) VALUES ('ROLE_ADMIN');
@@ -140,3 +146,5 @@ INSERT INTO ROLE(name) VALUES ('ROLE_ADMIN');
 INSERT INTO USER_ROLE(user_id, role_id) VALUES(1, 1);
 INSERT INTO USER_ROLE(user_id, role_id) VALUES(1, 2);
 INSERT INTO USER_ROLE(user_id, role_id) VALUES(2, 1);
+INSERT INTO USER_ROLE(user_id, role_id) VALUES(3, 1);
+INSERT INTO USER_ROLE(user_id, role_id) VALUES(4, 1);

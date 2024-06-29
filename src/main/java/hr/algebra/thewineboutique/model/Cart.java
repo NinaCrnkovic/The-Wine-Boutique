@@ -1,37 +1,44 @@
 package hr.algebra.thewineboutique.model;
 
+import jakarta.persistence.*;
 import lombok.*;
 
+import java.security.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
+
 import org.springframework.stereotype.Component;
 
-@Component
-@Getter
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
+@Entity
+@Table(name = "cart")
 public class Cart {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @Column(name = "session_id", unique = true)
+    private String sessionId;
+
+    @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CartItem> items = new ArrayList<>();
-    private static final AtomicLong counter = new AtomicLong();
 
-    public void addItem(Wine wine, int quantity) {
-        for (CartItem item : items) {
-            if (item.getWine().getId().equals(wine.getId())) {
-                item.setQuantity(item.getQuantity() + quantity);
-                return;
-            }
-        }
-        items.add(new CartItem(counter.incrementAndGet(), wine, quantity));
+    public Cart(String sessionId) {
+        this.sessionId = sessionId;
     }
 
-    public void removeItem(Long itemId) {
-        items.removeIf(item -> item.getId().equals(itemId));
+    public void addItem(CartItem item) {
+        items.add(item);
+
     }
 
-    public void clear() {
-        items.clear();
+    public void removeItem(Cart item) {
+        items.remove(item);
+
     }
 }
