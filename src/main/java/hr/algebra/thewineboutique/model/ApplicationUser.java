@@ -43,4 +43,9 @@ public class ApplicationUser {
             joinColumns =  @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
     private List<ApplicationRole> roles;
+
+
+    public boolean isAdmin() {
+        return this.roles.contains("ROLE_ADMIN"); // Adjust this line based on your role management
+    }
 }

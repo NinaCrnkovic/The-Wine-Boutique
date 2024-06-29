@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All Logins</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header>
+    <nav>
+        <ul>
+            <li class="logo"><img src="/images/logo.png" alt="Logo"></li>
+            <li><a th:href="@{/TheWineBoutique/home}">Home</a></li>
+            <li><a th:href="@{/TheWineBoutique/wineStore}">Wine Store</a></li>
+            <li><a th:href="@{/TheWineBoutique/search}">Search Wines</a></li>
+            <li th:if="${isAdmin}"><a th:href="@{/TheWineBoutique/allwines}">All Wines</a></li>
+            <li th:if="${isAdmin}"><a th:href="@{/TheWineBoutique/newWine}">Add New Wine</a></li>
+            <li th:if="${isAdmin}"><a th:href="@{/TheWineBoutique/orders}">All Orders</a></li>
+            <li th:if="${isAdmin}"><a th:href="@{/TheWineBoutique/loginLogs}">All Logins</a></li>
+            <li th:if="${isAuthenticated}">
+                <a href="/TheWineBoutique/logout" class="button">Logout</a>
+            </li>
+            <li th:if="${!isAuthenticated}">
+                <a href="/TheWineBoutique/login" class="button">Login</a>
+                <a href="/TheWineBoutique/register" class="button">Register</a>
+            </li>
+            <li class="cart-link">
+                <a href="/TheWineBoutique/cart/view" class="button">
+                    <img src="/images/cart.png" alt="Cart" class="cart-icon">
+                    <span class="cart-count" th:text="${cartSize}">0</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<div class="logs-container">
+    <h1>All Login Logs</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Username</th>
+            <th>Login Time</th>
+            <th>IP Address</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="log : ${loginLogs}">
+            <td th:text="${log.username}"></td>
+            <td th:text="${log.loginTime}"></td>
+            <td th:text="${log.ipAddress}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

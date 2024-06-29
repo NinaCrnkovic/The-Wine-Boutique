@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Error Page</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="error-container">
+  <h1>Something went wrong</h1>
+  <p>We encountered an error while processing your request.</p>
+  <p th:text="${message}">[Error message]</p>
+  <button onclick="location.href='/TheWineBoutique/home'" class="btn-home">Go to Home</button>
+</div>
+</body>
+</html>

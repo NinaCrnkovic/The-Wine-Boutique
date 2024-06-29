@@ -40,17 +40,24 @@
             <th>Wine</th>
             <th>Quantity</th>
             <th>Price</th>
+            <th>Update</th>
             <th>Remove</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="cartItem : ${cartItems}">
             <td th:text="${cartItem.wine.name}">Wine Name</td>
-            <td th:text="${cartItem.quantity}">1</td>
+            <td>
+                <form th:action="@{/TheWineBoutique/cart/update}" method="post">
+                    <input type="hidden" name="itemId" th:value="${cartItem.id}" />
+                    <input type="number" name="quantity" th:value="${cartItem.quantity}" min="1" />
+                    <button type="submit" class="update-button">Update</button>
+                </form>
+            </td>
             <td th:text="${cartItem.wine.price}">0.00</td>
             <td>
                 <form th:action="@{/TheWineBoutique/cart/remove/{itemId}(itemId=${cartItem.id})}" method="post">
-                    <button type="submit" class="remove-button" id="remove-btn">Remove</button>
+                    <button type="submit" class="remove-button">Remove</button>
                 </form>
             </td>
         </tr>
@@ -61,16 +68,16 @@
     </div>
     <div class="button-group">
         <form th:action="@{/TheWineBoutique/cart/clear}" method="post">
-            <button type="submit" class="button" id="clear-btn">Clear Cart</button>
+            <button type="submit" class="button">Clear Cart</button>
         </form>
-
         <a href="/TheWineBoutique/wineStore" class="button" id="continue-btn">Continue Shopping</a>
         <form th:action="@{/TheWineBoutique/cart/checkout}" method="post">
-            <button type="submit" id="checkout-btn" class="button">Checkout</button>
+            <button type="submit" class="button">Checkout</button>
         </form>
     </div>
 </div>
 
 </body>
 </html>
+
 

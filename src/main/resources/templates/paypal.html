@@ -8,10 +8,15 @@
 <body>
 <div class="paypal-container">
     <h1>PayPal Payment</h1>
-    <p>Proceed with your PayPal payment.</p>
-    <button onclick="location.href='/TheWineBoutique/pay'">Complete Payment</button>
-    <button onclick="location.href='/TheWineBoutique/wineStore'" class="btn-back-shopping">Back to Shopping</button>
+    <div class="paypal-details">
+        <h2>Order Summary</h2>
+        <p>Order ID: <span th:text="${order.id}"></span></p>
+        <p>Total Price: <span th:text="${order.totalPrice}"></span></p>
+        <form th:action="@{/TheWineBoutique/paypal/execute}" method="post">
+            <button type="submit">Proceed to PayPal</button>
+        </form>
+        <button onclick="location.href='/TheWineBoutique/cancel'" class="btn-cancel">Cancel</button>
+    </div>
 </div>
 </body>
 </html>
-

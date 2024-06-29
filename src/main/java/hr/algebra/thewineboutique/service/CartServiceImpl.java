@@ -68,4 +68,12 @@ public class CartServiceImpl implements CartService {
     public Cart getCartBySessionId(String sessionId) {
         return cartRepository.findBySessionId(sessionId);
     }
+
+    public void updateItemQuantity(String sessionId, Integer itemId, int quantity) {
+        CartItem cartItem = cartItemRepository.findByIdAndSessionId(itemId, sessionId);
+        if (cartItem != null) {
+            cartItem.setQuantity(quantity);
+            cartItemRepository.save(cartItem);
+        }
+    }
 }

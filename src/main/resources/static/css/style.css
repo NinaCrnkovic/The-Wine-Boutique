@@ -818,3 +818,40 @@ body {
 .paypal-container .btn-back-shopping {
     background-color: #f44336;
 }
+
+/* Style for the orders container */
+.orders-container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.orders-container table table {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.orders-container table table th,
+.orders-container table table td {
+    border: none;
+    padding: 4px;
+}
+
+.orders-container table table th {
+    background-color: #fafafa;
+}

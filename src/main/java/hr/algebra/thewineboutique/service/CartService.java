@@ -24,4 +24,5 @@ public interface CartService {
     Cart getCartBySessionId(String sessionId);
 
 
+    void updateItemQuantity(String id, Integer itemId, int quantity);
 }

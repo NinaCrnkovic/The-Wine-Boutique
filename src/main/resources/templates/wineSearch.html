@@ -48,19 +48,23 @@
                             let resultHtml = '<h2>Search Results</h2><div class="wine-grid">';
                             data.forEach(function(wine) {
                                 resultHtml += `
-                        <div class="wine-card">
-                            <img src="${wine.imageUrl}" alt="Wine Image">
-                            <h3>${wine.name}</h3>
-                            <p>Description: ${wine.description}</p>
-                            <p>Category: ${wine.category}</p>
-                            <p>Type: ${wine.type}</p>
-                            <p>Vintage: ${wine.vintage}</p>
-                            <p>Country: ${wine.country}</p>
-                            <p>Winery: ${wine.winery}</p>
-                            <p>Price: $${wine.price}</p>
-                            <button>Add to Cart</button>
-                        </div>
-                    `;
+                                    <div class="wine-card">
+                                        <img src="${wine.imageUrl}" alt="Wine Image">
+                                        <h3>${wine.name}</h3>
+                                        <p>Description: ${wine.description}</p>
+                                        <p>Category: ${wine.category}</p>
+                                        <p>Type: ${wine.type}</p>
+                                        <p>Vintage: ${wine.vintage}</p>
+                                        <p>Country: ${wine.country}</p>
+                                        <p>Winery: ${wine.winery}</p>
+                                        <p>Price: $${wine.price}</p>
+                                        <form action="/TheWineBoutique/cart/add" method="post">
+                                            <input type="hidden" name="wineId" value="${wine.id}" />
+                                            <input type="number" name="quantity" value="1" min="1" />
+                                            <button type="submit">Add to Cart</button>
+                                        </form>
+                                    </div>
+                                `;
                             });
                             resultHtml += '</div>';
                             resultsDiv.append(resultHtml);
@@ -72,6 +76,7 @@
                 });
             }
         }
+
         function resetSearch() {
             $('#searchForm')[0].reset();
             $('#searchResults').empty();
@@ -89,6 +94,7 @@
             <li><a th:href="@{/TheWineBoutique/search}">Search Wines</a></li>
             <li th:if="${isAdmin}"><a th:href="@{/TheWineBoutique/allwines}">All Wines</a></li>
             <li th:if="${isAdmin}"><a th:href="@{/TheWineBoutique/newWine}">Add New Wine</a></li>
+            <li th:if="${isAuthenticated}"><a th:href="@{/TheWineBoutique/orders}">All Orders</a></li>
             <li th:if="${isAuthenticated}">
                 <a href="/TheWineBoutique/logout" class="button">Logout</a>
             </li>
@@ -154,9 +160,7 @@
     </div>
 </form>
 
-
 <div class="search-results" id="searchResults">
-
     <div th:if="${#lists.isEmpty(searchResults)}">
         <h4>No results found.</h4>
     </div>
@@ -172,7 +176,11 @@
             <p th:text="'Country: ' + ${wine.country}">Wine Country</p>
             <p th:text="'Winery: ' + ${wine.winery}">Wine Winery</p>
             <p th:text="'Price: $' + ${wine.price}">Wine Price</p>
-            <button>Add to Cart</button>
+            <form th:action="@{/TheWineBoutique/cart/add}" method="post">
+                <input type="hidden" name="wineId" th:value="${wine.id}" />
+                <input type="number" name="quantity" value="1" min="1" />
+                <button type="submit">Add to Cart</button>
+            </form>
         </div>
     </div>
 </div>
@@ -181,11 +189,7 @@
     function resetForm() {
         window.location.href = window.location.href;
     }
-
-
 </script>
 
 </body>
 </html>
-
-
