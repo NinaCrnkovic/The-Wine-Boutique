@@ -26,8 +26,8 @@ public class PayPalService {
                                  String cancelUrl, String successUrl) throws PayPalRESTException {
         Amount amount = new Amount();
         amount.setCurrency(currency);
-        amount.setTotal(String.format(Locale.US, "%.2f", total)); // Ensure the amount is formatted to two decimal places
-        System.out.println("Formatted amount: " + amount.getTotal());
+        amount.setTotal(String.format(Locale.US, "%.2f", total));
+
         Transaction transaction = new Transaction();
         transaction.setDescription(description);
         transaction.setAmount(amount);

@@ -158,7 +158,7 @@ public class OrderController  extends BaseController {
         ApplicationUser user = userService.getCurrentUser();
         List<Order> orders;
 
-        if (user.isAdmin()) {
+        if (user != null && user.getRoles().stream().anyMatch(role -> role.getName().equals("ROLE_ADMIN"))) {
             orders = orderService.searchOrders(customer, fromDate, toDate, minPrice, maxPrice);
         } else {
             orders = orderService.searchOrdersByUser(user, customer, fromDate, toDate, minPrice, maxPrice);
